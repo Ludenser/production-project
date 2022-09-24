@@ -3,16 +3,16 @@ import './styles/index.scss'
 import { classNames } from "shared/lib/classNames/classNames";
 import { useTheme } from "shared/contexts";
 import { AppRouter } from "./providers/router";
+import { Navbar } from "widgets/Navbar";
 
 const App = () => {
 
   const { theme, toggleTheme } = useTheme()
   return (
     <div className={classNames('app', {}, [theme])}>
-      <button onClick={toggleTheme}>Сменить тему</button>
-      <Link to={'/'}>Главная</Link>
-      <Link to={'/about'}>О приложении</Link>
+      <Navbar />
       <AppRouter />
+      <button onClick={toggleTheme}>Сменить тему</button>
     </div>
   );
 }
