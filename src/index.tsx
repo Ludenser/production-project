@@ -1,16 +1,15 @@
-import { render } from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-import App from "app/App";
-import { ThemeProvider } from "shared/contexts";
-import 'shared/config/i18n/i18n'
+import { render } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import App from 'app/App';
+import { ThemeProvider } from 'shared/contexts';
+import 'shared/config/i18n/i18n';
 
 render(
-  <BrowserRouter>
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
+    <BrowserRouter>
+        <ThemeProvider>
+            <App />
+        </ThemeProvider>
 
-  </BrowserRouter>
-  ,
-  document.getElementById('root')
-)
+    </BrowserRouter>,
+    document.getElementById('root'),
+);
