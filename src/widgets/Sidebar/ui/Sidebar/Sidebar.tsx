@@ -31,7 +31,7 @@ export const Sidebar: FC<SidebarProps> = (props) => {
                 type="button"
                 onClick={onToggle}
             >
-                {t('Sidebar-toggle')}
+                {!collapsed ? t('Sidebar-toggle-close') : t('Sidebar-toggle-open')}
             </button>
             <div className={cls.switchers}>
                 <ThemeSwitcher />

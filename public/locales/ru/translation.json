@@ -2,5 +2,6 @@
   "Main-page-link": "Главная",
   "About-page-link": "О сайте",
   "Lang-switcher": "English",
-  "Sidebar-toggle": "Cвернуть"
+  "Sidebar-toggle-close": "Cвернуть",
+  "Sidebar-toggle-open": "Развернуть"
 }

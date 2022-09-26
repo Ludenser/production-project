@@ -2,5 +2,6 @@
   "Main-page-link": "Main page",
   "About-page-link": "About",
   "Lang-switcher": "Русский",
-  "Sidebar-toggle": "Close"
+  "Sidebar-toggle-close": "Close",
+  "Sidebar-toggle-open": "Expand"
 }
