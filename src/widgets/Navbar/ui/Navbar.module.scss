@@ -20,6 +20,10 @@
     padding-top: 13px;
     position: relative;
     text-decoration: none;
+
+    &:hover {
+        opacity: 0.8;
+    }
 }
 
 .current {

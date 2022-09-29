@@ -52,6 +52,10 @@
     right: 21px;
     margin-left: auto;
     transform: rotate(-90deg);
+
+    &:hover {
+        opacity: 0.8;
+    }
 }
 .expand_icon path { fill: var(--inverted-primary-color); }
 
@@ -60,4 +64,8 @@
     fill: var(--inverted-primary-color);
     margin-left: auto;
     transform: rotate(90deg);
+
+    &:hover {
+        opacity: 0.8;
+    }
 }
