@@ -2,7 +2,6 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { FC, useState } from 'react';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
-import { useTranslation } from 'react-i18next';
 import Expand from 'shared/assets/icons/expand-right.svg';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import cls from './Sidebar.module.scss';
@@ -12,8 +11,6 @@ interface SidebarProps {
 }
 
 export const Sidebar: FC<SidebarProps> = (props) => {
-    const { t } = useTranslation();
-
     const [collapsed, setCollapsed] = useState(false);
     const {
         className,
@@ -26,11 +23,14 @@ export const Sidebar: FC<SidebarProps> = (props) => {
 
     return (
         <div
+            data-testid="sidebar"
             className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
+            // eslint-disable-next-line react/jsx-props-no-spreading
             {...otherProps}
         >
             <div className={cls.icon_container}>
                 <Button
+                    data-testid="sidebar-toggle"
                     theme={ThemeButton.CLEAR}
                     onClick={onToggle}
                 >
