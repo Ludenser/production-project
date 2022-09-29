@@ -4,5 +4,7 @@
   "Lang-switcher": "Русский",
   "Sidebar-toggle-close": "Close",
   "Sidebar-toggle-open": "Expand",
-  "notFound-page": "Page not found"
+  "notFound-page": "Page not found",
+  "Something went wrong": "Something went wrong",
+  "Reload page": "Reload page"
 }

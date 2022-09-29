@@ -1,0 +1,43 @@
+.PageError {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(137 137 139);
+    font: var(--font-m);
+}
+
+.wrapper {
+    color: rgb(18 80 116);
+    font-size: 24px;
+    border-radius: 30px;
+    display: flex;
+    height: 241px;
+    width: 473px;
+    background-color: rgb(194 194 201);
+    box-shadow: 0 -5px 34px 3px rgb(34 60 80 / 60%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 15px;
+}
+
+.errorText {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.Button {
+    margin-top: 15px;
+    padding: 5px;
+    border-radius: 10px;
+    transition: all 0.2s;
+
+    &:hover {
+        opacity: 0.7;
+        border-color: rgb(60 170 233);
+        color: black;
+    }
+}

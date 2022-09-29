@@ -4,5 +4,7 @@
   "Lang-switcher": "English",
   "Sidebar-toggle-close": "Cвернуть",
   "Sidebar-toggle-open": "Развернуть",
-  "notFound-page": "Страница не найдена"
+  "notFound-page": "Страница не найдена",
+  "Something went wrong": "Произошла непредвиденная ошибка",
+  "Reload page": "Обновить страницу"
 }
