@@ -1,9 +1,12 @@
 .Sidebar {
-    height: calc(100vh - var(--navbar-height));
+    height: calc(95vh - var(--navbar-height));
     width: var(--sidebar-width);
     background: var(--inverted-bg-color);
+    border-radius: 30px;
     position: relative;
     transition: width 0.2s;
+    padding: 10px;
+    box-shadow: 0 -5px 34px 3px rgb(34 60 80 / 60%);
 }
 
 .collapsed {
@@ -16,8 +19,45 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    transition: right 0.2s;
+}
+
+.themeSwitcher {
+    margin-left: 18px;
+}
+
+.switchers_collapsed {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    right: 9px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .lang {
     margin-left: 20px;
+}
+
+.icon_container {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+}
+
+.expand_icon {
+    position: absolute;
+    right: 21px;
+    margin-left: auto;
+    transform: rotate(-90deg);
+}
+.expand_icon path { fill: var(--inverted-primary-color); }
+
+.collapsed_icon {
+    position: absolute;
+    fill: var(--inverted-primary-color);
+    margin-left: auto;
+    transform: rotate(90deg);
 }

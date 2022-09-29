@@ -6,15 +6,20 @@
 .app {
     font: var(--font-m);
     background: var(--bg-color);
-    color: var(--primary-color);
+    color: var(--inverted-primary-color);
     min-height: 100vh;
 }
 
 .content-page {
     display: flex;
+    padding: 15px;
+    gap: 15px;
 }
 
 .page-wrapper {
     flex-grow: 1;
     padding: 20px;
+    border-radius: 30px;
+    background-color: var(--inverted-bg-color);
+    box-shadow: 0 -5px 34px 3px rgb(34 60 80 / 60%);
 }

@@ -3,14 +3,26 @@
     height: var(--navbar-height);
     background: var(--inverted-bg-color);
     display: flex;
-    align-items: center;
-    padding: 20px;
+    align-items: stretch;
+    padding: 0 50px 0 20px;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    box-shadow: 0 5px 10px 2px rgb(34 60 80 / 20%);
 }
 
 .links {
     margin-left: auto;
+    display: flex;
 }
 
 .mainLink {
     margin-right: 15px;
+    padding-top: 13px;
+    position: relative;
+    text-decoration: none;
+}
+
+.current {
+    color: var(--current-link-color);
+    box-shadow: 0 9px 6px -6px var(--current-link-color);
 }
