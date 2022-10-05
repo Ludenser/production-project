@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { FC } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import RuIcon from 'shared/assets/icons/ru.svg';
 import EnIcon from 'shared/assets/icons/us.svg';
 
@@ -18,7 +18,9 @@ export const LangSwitcher: FC<LangSwitcherProps> = ({ className }) => {
 
         <Button
             className={classNames('', {}, [className])}
-            theme={ThemeButton.CLEAR}
+            shadow
+            hover
+            theme={ButtonTheme.CLEAR}
             onClick={toggle}
         >
             {i18n.language === 'en' ? <RuIcon /> : <EnIcon />}

@@ -1,4 +1,5 @@
 .Navbar {
+    position: relative;
     width: 100%;
     height: var(--navbar-height);
     background: var(--inverted-bg-color);
@@ -8,6 +9,7 @@
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
     box-shadow: 0 5px 10px 2px rgb(34 60 80 / 20%);
+    z-index: 3;
 }
 
 .links {
@@ -24,9 +26,4 @@
     &:hover {
         opacity: 0.8;
     }
-}
-
-.current {
-    color: var(--current-link-color);
-    box-shadow: 0 9px 6px -6px var(--current-link-color);
 }

@@ -13,3 +13,8 @@
 .red {
     color: red;
 }
+
+.current {
+    color: var(--current-link-color);
+    box-shadow: 0 9px 6px -6px var(--current-link-color);
+}

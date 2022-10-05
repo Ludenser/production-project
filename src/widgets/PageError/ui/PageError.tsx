@@ -23,8 +23,9 @@ export const PageError: FC<PageErrorProps> = ({ className }) => {
                 </p>
                 <ErrorSvg />
                 <Button
-                    className={cls.Button}
+                    className={cls.button}
                     onClick={reloadPage}
+                    hover
                 >
                     {t('Reload page')}
                 </Button>

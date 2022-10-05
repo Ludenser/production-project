@@ -5,12 +5,7 @@
     border-radius: 30px;
     position: relative;
     transition: width 0.2s;
-    padding: 10px;
-    box-shadow: 0 -5px 34px 3px rgb(34 60 80 / 60%);
-}
-
-.collapsed {
-    width: var(--sidebar-width-collapsed);
+    box-shadow: 0 0 20px 3px rgb(34 60 80 / 60%);
 }
 
 .switchers {
@@ -19,53 +14,75 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    transition: right 0.2s;
-}
-
-.themeSwitcher {
-    margin-left: 18px;
-}
-
-.switchers_collapsed {
-    position: absolute;
-    bottom: 20px;
-    display: flex;
-    right: 9px;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
 }
 
 .lang {
     margin-left: 20px;
 }
 
-.icon_container {
-    display: flex;
-    justify-content: right;
-    width: 100%;
-}
-
-.expand_icon {
+.expandIcon {
     position: absolute;
-    right: 21px;
-    margin-left: auto;
-    transform: rotate(-90deg);
-
-    &:hover {
-        opacity: 0.8;
-    }
-}
-.expand_icon path { fill: var(--inverted-primary-color); }
-
-.collapsed_icon {
-    position: absolute;
-    fill: var(--inverted-primary-color);
+    top: 10px;
+    right: 22px;
     margin-left: auto;
     transform: rotate(90deg);
+    path { fill: var(--inverted-primary-color); }
+}
 
-    &:hover {
-        opacity: 0.8;
+.items {
+    margin-top: 20px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.link {
+    margin-left: 10px;
+    opacity: 1;
+    padding-top: 6px;
+}
+
+.icon {
+    fill: var(--inverted-primary-color);
+
+    &.current {
+        fill: var(--current-link-color);
+    }
+}
+
+.collapsed {
+    width: var(--sidebar-width-collapsed);
+
+    .switchers {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .expandIcon {
+        fill: var(--inverted-primary-color);
+        transform: rotate(-90deg);
+    }
+
+    .lang {
+        margin-left: 0;
+    }
+
+    .link {
+        opacity: 0;
+        transition: 1s;
+        width: 0;
+        display: none;
+    }
+
+    .items {
+        align-items: center;
+        margin-left: 0;
     }
 }
