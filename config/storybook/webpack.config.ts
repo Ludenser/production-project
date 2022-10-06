@@ -14,8 +14,8 @@ export default ({ config }: {config: Configuration}) => {
     config.resolve!.extensions!.push('.ts', '.tsx');
 
     // eslint-disable-next-line no-param-reassign
-    config.module!.rules = config.module!.rules!.map((rule: RuleSetRule) => {
-        if (/svg/.test(rule.test as string)) {
+    config.module!.rules = config.module!.rules!.map((rule: RuleSetRule | '...') => {
+        if (rule instanceof Object && 'test' in rule && /svg/.test(rule.test as string)) {
             return { ...rule, exclude: /\.svg$/i };
         }
 
