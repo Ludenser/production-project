@@ -1,7 +1,7 @@
 .Sidebar {
     height: calc(95vh - var(--navbar-height));
     width: var(--sidebar-width);
-    background: var(--inverted-bg-color);
+    background: var(--overlay-bg-color);
     border-radius: 30px;
     position: relative;
     transition: width 0.2s;
