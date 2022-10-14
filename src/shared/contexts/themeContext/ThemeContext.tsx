@@ -3,8 +3,8 @@ import {
 } from 'react';
 
 export const enum Theme {
-  LIGHT = 'light',
-  DARK = 'dark'
+  LIGHT = 'app_light_theme',
+  DARK = 'app_dark_theme',
 }
 
 export interface ThemeContextProps {
@@ -23,6 +23,7 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider: FC<ThemeProviderProps> = (props) => {
+    document.body.className = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme.DARK || Theme.LIGHT;
     const {
         children,
         initialTheme,
