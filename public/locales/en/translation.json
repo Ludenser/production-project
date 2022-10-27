@@ -9,5 +9,8 @@
   "Reload page": "Reload page",
   "Log in": "Log in",
   "Decrement": "Decrement",
-  "Increment": "Increment"
+  "Increment": "Increment",
+  "Login": "Login",
+  "Password": "Password",
+  "Username": "Username"
 }

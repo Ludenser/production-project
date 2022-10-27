@@ -1,11 +1,11 @@
 /* eslint-disable i18next/no-literal-string */
 import { RoutePath } from 'app/providers/router/routeConfig/RouteConfig';
+import { LoginModal } from 'feauters/AuthByUsername';
 import { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { Modal } from 'shared/ui/Modal/Modal';
 import cls from './Navbar.module.scss';
 
 export const Navbar = () => {
@@ -13,8 +13,12 @@ export const Navbar = () => {
 
     const [isAuthModal, setIsAuthModal] = useState(false);
 
-    const onToggleModal = useCallback(() => {
-        setIsAuthModal((prev) => !prev);
+    const onCloseModal = useCallback(() => {
+        setIsAuthModal(false);
+    }, []);
+
+    const onShowModal = useCallback(() => {
+        setIsAuthModal(true);
     }, []);
 
     return (
@@ -31,21 +35,16 @@ export const Navbar = () => {
                 </AppLink>
                 <Button
                     theme={ButtonTheme.CLEAR}
-                    onClick={onToggleModal}
+                    onClick={onShowModal}
                     hover
                 >
                     {t('Log in')}
                 </Button>
             </div>
-            <Modal
+            <LoginModal
                 isOpen={isAuthModal}
-                onClose={onToggleModal}
-            >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Dolor laudantium provident totam iusto nemo veritatis architecto?
-                Repellat doloremque praesentium blanditiis quidem,
-                placeat cum sed quo quaerat aspernatur soluta ipsam odit.
-            </Modal>
+                onClose={onCloseModal}
+            />
         </div>
     );
 };

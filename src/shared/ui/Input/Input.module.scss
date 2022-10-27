@@ -1,0 +1,67 @@
+.InputWrapper label,
+.InputWrapper input[type="text"] {
+    transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
+}
+
+.InputWrapper {
+    position: relative;
+    padding: 10px 0;
+}
+
+.label {
+    transform-origin: left center;
+    color: var(--secondary-color);
+    font-weight: 100;
+    letter-spacing: 0.01em;
+    font-size: 17px;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    display: block;
+    position: absolute;
+    margin-top: -40px;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.6;
+    transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
+}
+
+.Input {
+    appearance: none;
+    background-color: var(--overlay-bg-color);
+    border: none;
+    line-height: 0;
+    font-size: 17px;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    padding: 10px 15px;
+    border-radius: 12px;
+    color: var(--current-link-color);
+    font-weight: 100;
+    letter-spacing: 0.01em;
+    position: relative;
+    z-index: 1;
+
+    &:focus {
+        box-shadow: 0 5px 10px 2px var(--secondary-color);
+        outline: none;
+        background: var(--primary-color);
+        color: var(--secondary-color);
+        margin-top: 30px;
+    }
+
+    &:valid {
+        margin-top: 30px;
+    }
+
+    &:focus ~ label {
+        transform: translate(0, -35px);
+        opacity: 1;
+    }
+
+    &:valid ~ label {
+        text-transform: uppercase;
+        font-style: italic;
+        transform: translate(5px, -35px) scale(0.9);
+    }
+}
