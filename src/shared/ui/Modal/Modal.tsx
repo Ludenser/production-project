@@ -61,9 +61,8 @@ export const Modal: FC<ModalProps> = (props) => {
             window.addEventListener('keydown', onKeyDown);
             timerRef.current = setTimeout(() => {
                 setIsOpening(true);
-            }, 0);
+            }, 30);
         }
-
         return () => {
             clearTimeout(timerRef.current);
             window.removeEventListener('keydown', onKeyDown);

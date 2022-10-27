@@ -16,6 +16,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
+    opacity: 0;
 }
 
 .content {
@@ -23,8 +25,9 @@
     padding: 20px;
     border-radius: 12px;
     background: var(--bg-color);
-    transition: 0.3s transform;
+    transition: all 0.3s ease;
     transform: scale(0.5);
+    opacity: 0;
     max-width: 60%;
 }
 
@@ -37,11 +40,21 @@
 .isOpening {
     .content {
         transform: scale(1);
+        opacity: 1;
+    }
+
+    .overlay {
+        opacity: 1;
     }
 }
 
 .isClosing {
     .content {
-        transform: scale(0.1);
+        transform: scale(0.4);
+        opacity: 0;
+    }
+
+    .overlay {
+        opacity: 0;
     }
 }
