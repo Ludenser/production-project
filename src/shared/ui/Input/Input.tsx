@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { classNames } from 'shared/lib/classNames/classNames';
 import {
@@ -15,8 +14,8 @@ interface InputProps extends HTMLInputProps {
     onChange?: (value:string)=> void;
 }
 
-export const Input: FC<InputProps> = memo(
-    (props) => {
+export const Input = memo(
+    (props: InputProps) => {
         const {
             className,
             value,
