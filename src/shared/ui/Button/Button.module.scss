@@ -1,7 +1,18 @@
 .Button {
     cursor: pointer;
-    color: var(--inverted-primary-color);
-    padding: 6px 15px;
+    background-color: var(--overlay-bg-color);
+    border: none;
+    line-height: 0;
+    font-size: 17px;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 20px 15px;
+    border-radius: 12px;
+    color: var(--secondary-color);
+    font-weight: 100;
+    letter-spacing: 0.01em;
+    z-index: 1;
+    transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
 }
 
 .clear,
@@ -26,40 +37,71 @@
     background: var(--overlay-bg-color);
     color: var(--inverted-primary-color);
     border: none;
+
+    &:hover {
+        color: var(--overlay-bg-color);
+        background-color: var(--secondary-color);
+    }
+
+    &:active {
+        background-color: var(--current-link-color);
+        box-shadow: 0 5px 10px 2px var(--secondary-color);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 5px 10px 2px var(--secondary-color);
+    }
 }
 
 .backgroundInverted {
     background: var(--bg-color);
     color: var(--primary-color);
     border: none;
+
+    &:hover {
+        color: var(--overlay-bg-color);
+        background-color: var(--secondary-color);
+    }
+
+    &:active {
+        background-color: var(--current-link-color);
+        box-shadow: 0 5px 10px 2px var(--secondary-color);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 5px 10px 2px var(--secondary-color);
+    }
 }
 
 .square {
     padding: 0;
     width: var(--font-line-m);
     height: var(--font-line-m);
-}
+    border-radius: 0;
 
-.square.size_l {
-    width: var(--font-line-l);
-    height: var(--font-line-l);
-}
+    &.square.size_l {
+        width: var(--font-line-l);
+        height: var(--font-line-l);
+    }
 
-.square.size_xl {
-    width: var(--font-line-xl);
-    height: var(--font-line-xl);
-}
+    &.square.size_xl {
+        width: var(--font-line-xl);
+        height: var(--font-line-xl);
+    }
 
-.size_m {
-    font: var(--font-m);
-}
+    &.size_m {
+        font: var(--font-m);
+    }
 
-.size_l {
-    font: var(--font-l);
-}
+    &.size_l {
+        font: var(--font-l);
+    }
 
-.size_xl {
-    font: var(--font-xl);
+    &.size_xl {
+        font: var(--font-xl);
+    }
 }
 
 .shadow {
