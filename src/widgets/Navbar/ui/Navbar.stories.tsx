@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
 import { Theme } from 'shared/contexts';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 import { Navbar } from './Navbar';
 
 export default {
@@ -15,9 +16,17 @@ export default {
 
 const Template: ComponentStory<typeof Navbar> = () => <Navbar />;
 
-export const Ligth = Template.bind({});
-Ligth.args = {};
+export const LightLogin = Template.bind({});
+LightLogin.args = {};
+LightLogin.decorators = [StoreDecorator({
+    user: {
+        authData: {
+            username: 'admin',
+            id: '12312',
+        },
+    },
+})];
 
-export const Dark = Template.bind({});
-Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
+export const DarkLogout = Template.bind({});
+DarkLogout.args = {};
+DarkLogout.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})];

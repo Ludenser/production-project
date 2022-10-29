@@ -12,5 +12,9 @@
   "Increment": "Increment",
   "Login": "Login",
   "Password": "Password",
-  "Username": "Username"
+  "Username": "Username",
+  "Authorization": "Authorization",
+  "Incorrect login or password": "Incorrect login or password",
+  "Done": "Done!",
+  "Log out": "Logout"
 }

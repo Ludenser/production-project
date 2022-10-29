@@ -1,0 +1,39 @@
+.title {
+    font: var(--font-l);
+    color: var(--overlay-bg-color);
+}
+
+.paragraph {
+    font: var(--font-m);
+    color: var(--inverted-primary-color);
+}
+
+.error {
+    .title {
+        color: var(--red-light);
+    }
+
+    .paragraph {
+        color: var(--red-dark);
+    }
+}
+
+.done {
+    .title {
+        color: var(--green-light);
+    }
+
+    .paragraph {
+        color: var(--green-dark);
+    }
+}
+
+.shadow {
+    .title {
+        text-shadow: 2px -4px 8px var(--secondary-color);
+    }
+
+    .paragraph {
+        text-shadow: 2px -4px 8px var(--secondary-color);
+    }
+}

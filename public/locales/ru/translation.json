@@ -10,5 +10,9 @@
   "Log in": "Войти",
   "Login": "Войти",
   "Password": "Пароль",
-  "Username": "Имя пользователя"
+  "Username": "Имя пользователя",
+  "Authorization": "Авторизация",
+  "Incorrect login or password": "Неверный логин или пароль",
+  "Done": "Успешно!",
+  "Log out": "Выйти"
 }
