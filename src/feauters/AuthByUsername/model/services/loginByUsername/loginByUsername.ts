@@ -21,7 +21,9 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, {rej
             thunkAPI.dispatch(userActions.setAuthData(response.data));
             return response.data;
         } catch (error) {
-            return thunkAPI.rejectWithValue(i18n.t('Incorrect login or password'));
+            return error.message.includes('Network Error')
+                ? thunkAPI.rejectWithValue(`${error}, (Сервер авторизации не работает)`)
+                : thunkAPI.rejectWithValue(i18n.t('Incorrect login or password'));
         }
     },
 );
