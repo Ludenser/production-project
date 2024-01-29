@@ -1,10 +1,14 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { loginActions } from 'feauters/AuthByUsername/model/slice/loginSlice';
 import React, {
-    FC, ReactNode, useRef, useState, useCallback, useEffect, lazy,
+    FC, ReactNode,
+    useCallback, useEffect,
+    useRef, useState,
 } from 'react';
 import { useTheme } from 'shared/contexts';
-import cls from './Modal.module.scss';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Portal } from '../Portal/Portal';
+import cls from './Modal.module.scss';
 
 interface ModalProps {
  className?: string;
@@ -28,12 +32,20 @@ export const Modal: FC<ModalProps> = (props) => {
     const [isOpening, setIsOpening] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
     const [isMounted, setIsMounted] = useState(false);
+    const clickStartedInside = useRef(false);
+    const dispatch = useAppDispatch();
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
     const { theme } = useTheme();
 
     useEffect(() => {
         setIsMounted(isOpen);
     }, [isOpen]);
+
+    const clearForm = useCallback(() => {
+        dispatch(loginActions.clearUsername());
+        dispatch(loginActions.clearPassword());
+        dispatch(loginActions.clearError());
+    }, [dispatch]);
 
     const closeHandler = useCallback(() => {
         if (onClose) {
@@ -42,15 +54,36 @@ export const Modal: FC<ModalProps> = (props) => {
                 onClose();
                 setIsOpening(false);
                 setIsClosing(false);
+                clearForm();
             }, ANIMATION_DELAY);
         }
-    }, [onClose]);
+    }, [onClose, clearForm]);
+
+    const cancelCloseAnimation = useCallback(() => {
+        if (timerRef.current) {
+            clearTimeout(timerRef.current);
+            setIsClosing(false);
+        }
+    }, []);
 
     const onKeyDown = useCallback((e: KeyboardEvent) => {
         if (e.key === 'Escape') {
             closeHandler();
         }
     }, [closeHandler]);
+
+    const handleOverlayMouseUp = useCallback((e: React.MouseEvent) => {
+        if (e.target === e.currentTarget && !clickStartedInside.current) {
+            closeHandler();
+        }
+        clickStartedInside.current = false;
+    }, [closeHandler]);
+
+    const handleContentMouseDown = useCallback((e: React.MouseEvent) => {
+        e.stopPropagation();
+        cancelCloseAnimation();
+        clickStartedInside.current = true;
+    }, [cancelCloseAnimation]);
 
     const onContentClick = (e: React.MouseEvent) => {
         e.stopPropagation();
@@ -84,11 +117,12 @@ export const Modal: FC<ModalProps> = (props) => {
             <div className={classNames(cls.Modal, mods, [className])}>
                 <div
                     className={cls.overlay}
-                    onClick={closeHandler}
+                    onMouseUp={handleOverlayMouseUp}
                 >
                     <div
                         className={cls.content}
                         onClick={onContentClick}
+                        onMouseDown={handleContentMouseDown}
                     >
                         {children}
                     </div>

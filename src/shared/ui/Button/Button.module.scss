@@ -39,23 +39,24 @@
     border: none;
 
     &:hover {
-        color: var(--overlay-bg-color);
+        color: var(--current-link-color);
         background-color: var(--secondary-color);
     }
 
     &:active {
-        background-color: var(--current-link-color);
-        box-shadow: 0 5px 10px 2px var(--secondary-color);
+        color: var(--secondary-color);
+        background: linear-gradient(to right, rgb(11 41 59 / 25%), rgb(20 134 205 / 47%));
+        box-shadow: 0 0 0 2px var(--secondary-color);
     }
 
     &:focus {
         outline: none;
-        box-shadow: 0 5px 10px 2px var(--secondary-color);
+        box-shadow: 0 0 0 2px var(--secondary-color);
     }
 }
 
 .backgroundInverted {
-    background: var(--bg-color);
+    background-image: var(--bg-color);
     color: var(--primary-color);
     border: none;
 

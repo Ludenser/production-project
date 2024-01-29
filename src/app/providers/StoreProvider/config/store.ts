@@ -1,17 +1,19 @@
-import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
+import {
+    AnyAction, configureStore, ReducersMapObject, ThunkDispatch,
+} from '@reduxjs/toolkit';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { createReducerManager } from './reducerManager';
-import { StateSchema } from './StateSchema';
+import { ReduxStoreWithManager, StateSchema } from './StateSchema';
 
 export function createReduxStore(
     initialState?: StateSchema,
     asyncReducers?: ReducersMapObject<StateSchema>,
-) {
+): ReduxStoreWithManager {
     const rootReducers: ReducersMapObject<StateSchema> = {
-        ...asyncReducers,
         counter: counterReducer,
         user: userReducer,
+        ...asyncReducers,
     };
 
     const reducerManager = createReducerManager(rootReducers);
@@ -19,12 +21,13 @@ export function createReduxStore(
         reducer: reducerManager.reduce,
         devTools: __IS_DEV__,
         preloadedState: initialState,
-    });
+    }) as ReduxStoreWithManager;
 
-    // @ts-ignore
     store.reducerManager = reducerManager;
 
     return store;
 }
+
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'] & ThunkDispatch<StateSchema, any, AnyAction>;
 
 export default createReduxStore;

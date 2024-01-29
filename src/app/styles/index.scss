@@ -9,7 +9,7 @@ body {
 }
 
 .app {
-    background: var(--bg-color);
+    background-image: var(--bg-image);
     min-height: 100vh;
 }
 
@@ -22,7 +22,8 @@ body {
 .page-wrapper {
     flex-grow: 1;
     padding: 20px;
+    backdrop-filter: blur(10px);
+    border: var(--overlay-border-color);
     border-radius: 30px;
     background-color: var(--overlay-bg-color);
-    box-shadow: 0 0 20px 3px rgb(34 60 80 / 60%);
 }

@@ -1,6 +1,6 @@
 .title {
     font: var(--font-l);
-    color: var(--overlay-bg-color);
+    color: var(--secondary-color);
 }
 
 .paragraph {
@@ -14,7 +14,8 @@
     }
 
     .paragraph {
-        color: var(--red-dark);
+        color: var(--red-light);
+        font-weight: bold;
     }
 }
 
@@ -30,10 +31,6 @@
 
 .shadow {
     .title {
-        text-shadow: 2px -4px 8px var(--secondary-color);
-    }
-
-    .paragraph {
-        text-shadow: 2px -4px 8px var(--secondary-color);
+        text-shadow: 0 0 17px var(--secondary-color);
     }
 }

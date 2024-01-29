@@ -1,11 +1,14 @@
 import { useTranslation } from 'react-i18next';
+import { FadeInWrapper } from 'shared/ui/FadeInWrapper/FadeInWrapper';
 
 function AboutPage() {
     const { t } = useTranslation('about');
     return (
-        <div>
-            {t('About-page')}
-        </div>
+        <FadeInWrapper>
+            <div>
+                {t('About-page')}
+            </div>
+        </FadeInWrapper>
     );
 }
 

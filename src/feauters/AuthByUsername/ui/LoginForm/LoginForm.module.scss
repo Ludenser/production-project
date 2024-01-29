@@ -1,3 +1,10 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
 .LoginForm {
     display: flex;
     flex-direction: column;

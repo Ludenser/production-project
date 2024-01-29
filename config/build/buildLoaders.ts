@@ -4,13 +4,18 @@ import { BuildOptions } from './types/config';
 
 export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
     const imageLoader = {
-        test: /\.(png|jpe?g|gif|woff)$/i,
+        test: /\.(png|jpe?g|gif|woff|jpg)$/i,
         use: [
             {
                 loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: 'assets/images/',
+                },
             },
         ],
     };
+    console.log(imageLoader);
 
     const svgLoader = {
         test: /\.svg$/,

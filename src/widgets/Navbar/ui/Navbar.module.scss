@@ -3,12 +3,13 @@
     width: 100%;
     height: var(--navbar-height);
     background: var(--overlay-bg-color);
+    backdrop-filter: blur(10px);
     display: flex;
     align-items: stretch;
     padding: 0 50px 0 20px;
+    border: var(--overlay-border-color);
     border-bottom-right-radius: 30px;
     border-bottom-left-radius: 30px;
-    box-shadow: 0 5px 10px 2px rgb(34 60 80 / 20%);
     z-index: 3;
 }
 
@@ -19,7 +20,7 @@
 
 .mainLink {
     margin-right: 15px;
-    padding-top: 13px;
+    padding-top: 11px;
     position: relative;
     text-decoration: none;
 
