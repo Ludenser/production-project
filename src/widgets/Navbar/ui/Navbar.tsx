@@ -2,7 +2,7 @@
 import { RoutePath } from 'app/providers/router/routeConfig/RouteConfig';
 import { getUserAuthData, userActions } from 'entities/User';
 import { LoginModal } from 'feauters/AuthByUsername';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -14,6 +14,7 @@ export const Navbar = () => {
     const { t } = useTranslation();
 
     const [isAuthModal, setIsAuthModal] = useState(false);
+    const [showModalDelayed, setShowModalDelayed] = useState(false);
     const authData = useSelector(getUserAuthData);
     const dispatch = useDispatch();
 
@@ -30,29 +31,21 @@ export const Navbar = () => {
         dispatch(userActions.logout());
     }, [dispatch]);
 
-    if (authData) {
-        return (
-            <div className={classNames(cls.Navbar, {}, [])}>
-                <div className={cls.links}>
-                    <AppLink
-                        theme={AppLinkTheme.SECONDARY}
-                        to={RoutePath.main}
-                        current
-                        className={cls.mainLink}
-                    >
-                        {t('Main-page-link')}
-                    </AppLink>
-                    <Button
-                        theme={ButtonTheme.CLEAR}
-                        onClick={onLogout}
-                        hover
-                    >
-                        {t('Log out')}
-                    </Button>
-                </div>
-            </div>
-        );
-    }
+    useEffect(() => {
+        let timer: ReturnType<typeof setTimeout>;
+
+        if (authData) {
+            setShowModalDelayed(true);
+            timer = setTimeout(() => {
+                setShowModalDelayed(false);
+                onCloseModal();
+            }, 3000);
+        }
+
+        return () => {
+            if (timer) clearTimeout(timer);
+        };
+    }, [authData, onCloseModal]);
 
     return (
         <div className={classNames(cls.Navbar, {}, [])}>
@@ -67,13 +60,18 @@ export const Navbar = () => {
                 </AppLink>
                 <Button
                     theme={ButtonTheme.CLEAR}
-                    onClick={onShowModal}
+                    onClick={authData
+                        ? onLogout
+                        : onShowModal}
                     hover
                 >
-                    {t('Log in')}
+                    {authData
+                        ? t('Log out')
+                        : t('Log in')}
                 </Button>
             </div>
-            {isAuthModal && (
+            {(isAuthModal || showModalDelayed)
+            && (
                 <LoginModal
                     isOpen={isAuthModal}
                     onClose={onCloseModal}

@@ -1,6 +1,9 @@
-import { FormEvent, memo, useCallback } from 'react';
+import {
+    FormEvent, memo, useCallback, useEffect, useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import DoneSVG from 'shared/assets/icons/done.svg';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -27,6 +30,7 @@ const initialReducers: ReducersList = {
 
 const LoginForm = memo(({ className, onClose }: LoginFormProps) => {
     const { t } = useTranslation();
+    const [loginDone, setLoginDone] = useState(false);
     const dispatch = useAppDispatch();
     const username = useSelector(getLoginUsername);
     const password = useSelector(getLoginPassword);
@@ -48,51 +52,64 @@ const LoginForm = memo(({ className, onClose }: LoginFormProps) => {
 
     const onLoginClick = useCallback(async (e: FormEvent) => {
         e.preventDefault();
-        await dispatch(loginByUsername({ username, password }));
-        clearForm();
+        const res = await dispatch(loginByUsername({ username, password }));
+        console.log(res.meta);
+        if (res.meta.requestStatus === 'fulfilled') {
+            setLoginDone(true);
+            clearForm();
+        }
     }, [clearForm, dispatch, password, username]);
 
-    useCallback(() => {
-        if (onClose) {
-            onClose();
+    useEffect(() => {
+        let timer: ReturnType<typeof setTimeout>;
+        if (loginDone) {
+            timer = setTimeout(() => {
+                setLoginDone(false);
+            }, 3000);
         }
-        clearForm();
-    }, [onClose, clearForm]);
+        return () => clearTimeout(timer);
+    }, [loginDone]);
+
+    let content;
+    if (isLoading) {
+        content = <Loader />;
+    } else if (loginDone && !error) {
+        content = <DoneSVG style={{ stroke: '#FFF', width: '100px', height: '93px' }} />;
+    } else {
+        content = (
+            <form className={cls.LoginForm} onSubmit={onLoginClick}>
+                <Input
+                    onChange={onChangeUsername}
+                    required
+                    label={t('Username')}
+                    type="text"
+                    value={username}
+                />
+                <Input
+                    onChange={onChangePassword}
+                    required
+                    label={t('Password')}
+                    type="text"
+                    value={password}
+                />
+                <Button
+                    theme={ButtonTheme.BACKGROUND}
+                    className={cls.loginBtn}
+                    disabled={isLoading}
+                    type="submit"
+                >
+                    {t('Login')}
+                </Button>
+            </form>
+        );
+    }
 
     return (
         <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
             <div className={classNames('', { [cls.Container]: isLoading }, [className])}>
-                <Text title={isLoading ? `${t('Authorization')}...` : t('Authorization')} />
+                <Text title={t('Authorization')} />
                 {error && <Text text={error} theme={TextTheme.ERROR} />}
-
-                {isLoading ? (
-                    <Loader />
-                ) : (
-                    <form className={cls.LoginForm} onSubmit={onLoginClick}>
-                        <Input
-                            onChange={onChangeUsername}
-                            required
-                            label={t('Username')}
-                            type="text"
-                            value={username}
-                        />
-                        <Input
-                            onChange={onChangePassword}
-                            required
-                            label={t('Password')}
-                            type="text"
-                            value={password}
-                        />
-                        <Button
-                            theme={ButtonTheme.BACKGROUND}
-                            className={cls.loginBtn}
-                            disabled={isLoading}
-                            type="submit"
-                        >
-                            {t('Login')}
-                        </Button>
-                    </form>
-                )}
+                {content}
             </div>
         </DynamicModuleLoader>
     );
