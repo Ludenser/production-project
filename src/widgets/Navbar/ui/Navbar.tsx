@@ -2,7 +2,9 @@
 import { RoutePath } from 'app/providers/router/routeConfig/RouteConfig';
 import { getUserAuthData, userActions } from 'entities/User';
 import { LoginModal } from 'feauters/AuthByUsername';
-import { useCallback, useEffect, useState } from 'react';
+import {
+    memo, useCallback, useEffect, useState,
+} from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -10,7 +12,7 @@ import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import cls from './Navbar.module.scss';
 
-export const Navbar = () => {
+export const Navbar = memo(() => {
     const { t } = useTranslation();
 
     const [isAuthModal, setIsAuthModal] = useState(false);
@@ -52,11 +54,11 @@ export const Navbar = () => {
             <div className={cls.links}>
                 <AppLink
                     theme={AppLinkTheme.SECONDARY}
-                    to={RoutePath.main}
+                    to={RoutePath.about}
                     current
                     className={cls.mainLink}
                 >
-                    {t('Main-page-link')}
+                    {t('About-page-link')}
                 </AppLink>
                 <Button
                     theme={ButtonTheme.CLEAR}
@@ -79,4 +81,4 @@ export const Navbar = () => {
             )}
         </div>
     );
-};
+});

@@ -1,27 +1,20 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { FC, useState } from 'react';
-import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
-import { LangSwitcher } from 'widgets/LangSwitcher';
+import { memo, useState } from 'react';
 import Expand from 'shared/assets/icons/expand-right.svg';
+import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
-import { RoutePath } from 'app/providers/router/routeConfig/RouteConfig';
-import { useTranslation } from 'react-i18next';
-import AboutIcon from 'shared/assets/icons/about.svg';
-import MainIcon from 'shared/assets/icons/home.svg';
-import { useLocation } from 'react-router-dom';
+import { LangSwitcher } from 'widgets/LangSwitcher';
+import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import cls from './Sidebar.module.scss';
+import { SidebarItem } from './SidenarItem/SidebarItem';
+import { SidebarItemsList } from './model/items';
 
 interface SidebarProps {
     className?: string;
 }
 
-export const Sidebar: FC<SidebarProps> = (props) => {
-    const { t } = useTranslation();
-    const location = useLocation();
+export const Sidebar = memo((props: SidebarProps) => {
     const [collapsed, setCollapsed] = useState(false);
     const {
-        className,
         ...otherProps
     } = props;
 
@@ -32,7 +25,7 @@ export const Sidebar: FC<SidebarProps> = (props) => {
     return (
         <div
             data-testid="sidebar"
-            className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
+            className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [])}
             // eslint-disable-next-line react/jsx-props-no-spreading
             {...otherProps}
         >
@@ -50,22 +43,13 @@ export const Sidebar: FC<SidebarProps> = (props) => {
             </div>
             <div className={cls.items}>
 
-                <AppLink
-                    current
-                    theme={AppLinkTheme.SECONDARY}
-                    to={RoutePath.about}
-                    className={cls.item}
-                >
-                    <AboutIcon className={classNames(
-                        cls.icon,
-                        { [cls.current]: location.pathname === RoutePath.about },
-                        [],
-                    )}
+                {SidebarItemsList.map((item) => (
+                    <SidebarItem
+                        item={item}
+                        collapsed={collapsed}
+                        key={item.path}
                     />
-                    <span className={cls.link}>
-                        {t('About-page-link')}
-                    </span>
-                </AppLink>
+                ))}
 
             </div>
 
@@ -75,4 +59,4 @@ export const Sidebar: FC<SidebarProps> = (props) => {
             </div>
         </div>
     );
-};
+});

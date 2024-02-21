@@ -1,7 +1,6 @@
 import {
     AnyAction, configureStore, ReducersMapObject, ThunkDispatch,
 } from '@reduxjs/toolkit';
-import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { createReducerManager } from './reducerManager';
 import { ReduxStoreWithManager, StateSchema } from './StateSchema';
@@ -11,7 +10,6 @@ export function createReduxStore(
     asyncReducers?: ReducersMapObject<StateSchema>,
 ): ReduxStoreWithManager {
     const rootReducers: ReducersMapObject<StateSchema> = {
-        counter: counterReducer,
         user: userReducer,
         ...asyncReducers,
     };

@@ -36,6 +36,13 @@
         }
     ],
     "profile": {
-        "name": "typicode"
+        "first": "Сергей",
+        "lastname": "Веденеев",
+        "age": "28",
+        "currency": "RUB",
+        "country": "Russia",
+        "city": "Moscow",
+        "username": "admin",
+        "avatar": "http://localhost:3000/avatars/admin"
     }
 }

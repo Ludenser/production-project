@@ -1,15 +1,13 @@
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FadeInWrapper } from 'shared/ui/FadeInWrapper/FadeInWrapper';
 
-function AboutPage() {
+const AboutPage = memo(() => {
     const { t } = useTranslation('about');
     return (
-        <FadeInWrapper>
-            <div>
-                {t('About-page')}
-            </div>
-        </FadeInWrapper>
+        <div>
+            {t('About-page')}
+        </div>
     );
-}
+});
 
 export default AboutPage;

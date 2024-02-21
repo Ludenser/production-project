@@ -1,8 +1,7 @@
 import { Reducer } from '@reduxjs/toolkit';
 import { ReduxStoreWithManager } from 'app/providers/StoreProvider';
 import { StateSchemaKey } from 'app/providers/StoreProvider/config/StateSchema';
-import { loginReducer } from 'feauters/AuthByUsername';
-import { FC, useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 
 export type ReducersList = {
@@ -14,9 +13,10 @@ type ReducersListEntries = [StateSchemaKey, Reducer]
 interface DynamicModuleLoaderProps {
     reducers: ReducersList;
     removeAfterUnmount?: boolean;
+    children?: ReactNode;
 }
 
-export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
+export const DynamicModuleLoader = (props: DynamicModuleLoaderProps) => {
     const {
         children,
         reducers,
@@ -35,8 +35,8 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = (props) => {
         return () => {
             if (removeAfterUnmount) {
                 Object.entries(reducers).forEach(([name, reducer]: ReducersListEntries) => {
-                    store.reducerManager.add(name, reducer);
-                    dispatch({ type: `@INIT ${name} reducer` });
+                    store.reducerManager.remove(name);
+                    dispatch({ type: `@DESTROY ${name} reducer` });
                 });
             }
         };

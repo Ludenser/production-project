@@ -1,6 +1,6 @@
 import { loginActions } from 'feauters/AuthByUsername/model/slice/loginSlice';
 import React, {
-    FC, ReactNode,
+    ReactNode,
     useCallback, useEffect,
     useRef, useState,
 } from 'react';
@@ -20,7 +20,7 @@ interface ModalProps {
 
 const ANIMATION_DELAY = 300;
 
-export const Modal: FC<ModalProps> = (props) => {
+export const Modal = (props: ModalProps) => {
     const {
         className,
         children,

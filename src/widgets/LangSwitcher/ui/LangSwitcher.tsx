@@ -1,16 +1,16 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { FC } from 'react';
+import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import RuIcon from 'shared/assets/icons/ru.svg';
 import EnIcon from 'shared/assets/icons/us.svg';
+import { classNames } from 'shared/lib/classNames/classNames';
+import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 
 interface LangSwitcherProps {
     className?: string;
 }
 
-export const LangSwitcher: FC<LangSwitcherProps> = ({ className }) => {
-    const { t, i18n } = useTranslation();
+export const LangSwitcher = memo(({ className }: LangSwitcherProps) => {
+    const { i18n } = useTranslation();
     const toggle = () => {
         i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
     };
@@ -26,4 +26,4 @@ export const LangSwitcher: FC<LangSwitcherProps> = ({ className }) => {
             {i18n.language === 'en' ? <RuIcon /> : <EnIcon />}
         </Button>
     );
-};
+});
