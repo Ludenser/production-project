@@ -60,6 +60,7 @@ module.exports = {
     // 'react/prop-types': 'off',
     'no-param-reassign': 'off',
     'no-console': 'off',
+    'no-undef': 'off',
   },
   globals: {
     __IS_DEV__: true,

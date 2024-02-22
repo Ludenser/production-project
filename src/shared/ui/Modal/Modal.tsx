@@ -1,11 +1,12 @@
 import { loginActions } from 'feauters/AuthByUsername/model/slice/loginSlice';
 import React, {
+    MutableRefObject,
     ReactNode,
     useCallback, useEffect,
     useRef, useState,
 } from 'react';
 import { useTheme } from 'shared/contexts';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Portal } from '../Portal/Portal';
 import cls from './Modal.module.scss';
@@ -34,11 +35,13 @@ export const Modal = (props: ModalProps) => {
     const [isMounted, setIsMounted] = useState(false);
     const clickStartedInside = useRef(false);
     const dispatch = useAppDispatch();
-    const timerRef = useRef<ReturnType<typeof setTimeout>>();
+    const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
     const { theme } = useTheme();
 
     useEffect(() => {
-        setIsMounted(isOpen);
+        if (isOpen) {
+            setIsMounted(true);
+        }
     }, [isOpen]);
 
     const clearForm = useCallback(() => {
@@ -102,7 +105,7 @@ export const Modal = (props: ModalProps) => {
         };
     }, [isOpen, onKeyDown]);
 
-    const mods: Record<string, boolean> = {
+    const mods: Mods = {
         [cls.opened]: isOpen,
         [cls.isOpening]: isOpening,
         [cls.isClosing]: isClosing,
