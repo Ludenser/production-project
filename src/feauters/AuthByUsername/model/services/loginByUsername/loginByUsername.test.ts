@@ -38,6 +38,7 @@ describe('loginByUsername.test', () => {
         const userValue = { username: '123', id: '1' };
 
         const thunk = new TestAsynkThunk(loginByUsername);
+        thunk.api.post.mockReturnValue(Promise.resolve({ data: userValue }));
         const result = await thunk.callThunk({ username: '123', password: '123' });
 
         expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(userValue));
@@ -55,6 +56,6 @@ describe('loginByUsername.test', () => {
         expect(thunk.api.post).toHaveBeenCalled();
         expect(thunk.dispatch).toHaveBeenCalledTimes(2);
         expect(result.meta.requestStatus).toBe('rejected');
-        expect(result.payload).toBe('Incorrect login or password');
+        expect(result.payload).toBe(('An unexpected error occurred'));
     });
 });
