@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {
     FormEvent, memo, useCallback, useEffect, useState,
 } from 'react';

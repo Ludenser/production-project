@@ -1,5 +1,6 @@
 {
   "Main-page-link": "Main page",
+  "Profile-page-link": "Profile",
   "About-page-link": "About",
   "Lang-switcher": "Русский",
   "Sidebar-toggle-close": "Close",
@@ -14,5 +15,19 @@
   "Authorization": "Sign in",
   "Incorrect login or password": "Incorrect login or password",
   "Done": "Done!",
-  "Log out": "Logout"
+  "Log out": "Logout",
+  "currency": {
+    "label": "Currency",
+    "RUB": "Russian Ruble",
+    "EUR": "Euro",
+    "USD": "US Dollar"
+  },
+  "country": {
+    "label": "Country",
+    "Russia": "Russia",
+    "Belarus": "Belarus",
+    "Ukraine": "Ukraine",
+    "Kazakhstan": "Kazakhstan",
+    "Armenia": "Armenia"
+  }
 }

@@ -1,8 +1,5 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta, StoryFn } from '@storybook/react';
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
-import { Theme } from 'shared/contexts';
 import MainPage from './MainPage';
 
 export default {
@@ -11,13 +8,11 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof MainPage>;
+} as Meta<typeof MainPage>;
 
-const Template: ComponentStory<typeof MainPage> = () => <MainPage />;
+const Template: StoryFn<typeof MainPage> = () => <MainPage />;
 
-export const Ligth = Template.bind({});
-Ligth.args = {};
-
-export const Dark = Template.bind({});
-Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
+export const Primary = {
+    render: Template,
+    args: {},
+};

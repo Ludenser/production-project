@@ -1,8 +1,6 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+/* eslint-disable react/jsx-props-no-spreading */
+import { Meta, StoryObj } from '@storybook/react';
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
-import { Theme } from 'shared/contexts';
 import { AppLink, AppLinkTheme } from './AppLink';
 
 export default {
@@ -14,45 +12,32 @@ export default {
     args: {
         to: '/',
     },
-} as ComponentMeta<typeof AppLink>;
+} as Meta<typeof AppLink>;
 
-const Template: ComponentStory<typeof AppLink> = (args) => <AppLink {...args} />;
-
-export const Primary = Template.bind({});
-Primary.args = {
-    children: 'Text',
-    theme: AppLinkTheme.PRIMARY,
+const Template: StoryObj<typeof AppLink> = {
+    render: (args) => <AppLink {...args} />,
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-    children: 'Text',
-    theme: AppLinkTheme.SECONDARY,
+export const Primary: StoryObj<typeof AppLink> = {
+    ...Template,
+    args: {
+        children: 'Text',
+        theme: AppLinkTheme.PRIMARY,
+    },
 };
 
-export const Red = Template.bind({});
-Red.args = {
-    children: 'Text',
-    theme: AppLinkTheme.RED,
+export const Secondary: StoryObj<typeof AppLink> = {
+    ...Template,
+    args: {
+        children: 'Text',
+        theme: AppLinkTheme.SECONDARY,
+    },
 };
 
-export const PrimaryDark = Template.bind({});
-PrimaryDark.args = {
-    children: 'Text',
-    theme: AppLinkTheme.PRIMARY,
+export const Red: StoryObj<typeof AppLink> = {
+    ...Template,
+    args: {
+        children: 'Text',
+        theme: AppLinkTheme.RED,
+    },
 };
-PrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
-
-export const SecondaryDark = Template.bind({});
-SecondaryDark.args = {
-    children: 'Text',
-    theme: AppLinkTheme.SECONDARY,
-};
-SecondaryDark.decorators = [ThemeDecorator(Theme.DARK)];
-
-export const RedDark = Template.bind({});
-RedDark.args = {
-    children: 'Text',
-    theme: AppLinkTheme.RED,
-};
-RedDark.decorators = [ThemeDecorator(Theme.DARK)];

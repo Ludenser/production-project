@@ -6,6 +6,8 @@ export const enum ButtonTheme {
     CLEAR = 'clear',
     CLEAR_INVERTED = 'clearInverted',
     OUTLINE = 'outline',
+    OUTLINE_DONE = 'outline_done',
+    OUTLINE_WARN = 'outline_warn',
     BACKGROUND = 'background',
     BACKGROUND_INVERTED = 'backgroundInverted',
 }

@@ -5,7 +5,6 @@ import React, {
     useCallback, useEffect,
     useRef, useState,
 } from 'react';
-import { useTheme } from 'shared/contexts';
 import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Portal } from '../Portal/Portal';
@@ -36,7 +35,6 @@ export const Modal = (props: ModalProps) => {
     const clickStartedInside = useRef(false);
     const dispatch = useAppDispatch();
     const timerRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
-    const { theme } = useTheme();
 
     useEffect(() => {
         if (isOpen) {

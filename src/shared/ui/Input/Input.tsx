@@ -1,18 +1,20 @@
+/* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import {
     ChangeEvent,
     InputHTMLAttributes, memo,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { Mods, classNames } from 'shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readonly'>
 
 interface InputProps extends HTMLInputProps {
     label?:string;
     className?: string;
-    value?: string;
+    value?: string | number;
     onChange?: (value:string)=> void;
+    readonly?: boolean;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -23,11 +25,17 @@ export const Input = memo((props: InputProps) => {
         type = 'text',
         label,
         required,
+        readonly,
         ...otherProps
     } = props;
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         onChange?.(e.target.value);
+    };
+
+    const mods: Mods = {
+        [cls.readonly]: readonly,
+        [cls.hasValue]: value !== '',
     };
     return (
         <div
@@ -35,11 +43,12 @@ export const Input = memo((props: InputProps) => {
         >
 
             <input
-                required
+                required={required}
                 type={type}
                 value={value}
                 onChange={onChangeHandler}
-                className={cls.Input}
+                className={classNames(cls.Input, mods)}
+                readOnly={readonly}
                 {...otherProps}
             />
             <label

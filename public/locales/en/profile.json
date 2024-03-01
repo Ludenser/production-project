@@ -2,5 +2,19 @@
   "profile-text": "User Profile",
   "edit": "Edit",
   "your-firstname": "Firstname",
-  "your-lastname": "Lastname"
+  "your-lastname": "Lastname",
+  "cancel": "Сancel",
+  "save": "Save",
+  "your-age": "Age",
+  "your-city": "City",
+  "your-username": "Username",
+  "your-avatar": "Profile photo",
+  "error": {
+    "server": "Server error occurred while saving",
+    "age": "Invalid age",
+    "country": "Invalid region",
+    "userdata": "First and last name are required",
+    "nodata": "Fields cannot be empty"
+}
+
 }

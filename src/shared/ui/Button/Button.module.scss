@@ -28,9 +28,61 @@
 }
 
 .outline {
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
+    border: 1px solid var(--current-link-color);
+    color: var(--current-link-color);
     background: none;
+
+    &:hover {
+        color: var(--secondary-color);
+        background-color: var(--overlay-bg-color);
+    }
+
+    &:active {
+        color: var(--secondary-color);
+        background: linear-gradient(to right, rgb(11 41 59 / 25%), rgb(20 134 205 / 47%));
+        box-shadow: 0 0 0 1px var(--secondary-color);
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 1px var(--secondary-color);
+    }
+}
+
+.outline_done {
+    border: 1px solid var(--done-color);
+    color: var(--done-color);
+    background: none;
+
+    &:hover,
+    &:focus {
+        color: var(--secondary-color);
+        background-color: var(--overlay-bg-color);
+        box-shadow: 0 0 0 0.5px var(--secondary-color);
+    }
+
+    &:active {
+        background: linear-gradient(to right, rgb(11 41 59 / 25%), rgb(20 134 205 / 47%));
+        box-shadow: 0 0 0 1px var(--secondary-color);
+    }
+}
+
+.outline_warn {
+    border: 1px solid var(--warn-color);
+    color: var(--warn-color);
+    background: none;
+
+    &:hover,
+    &:focus {
+        color: var(--secondary-color);
+        background-color: var(--overlay-bg-color);
+        box-shadow: 0 0 0 0.5px var(--secondary-color);
+    }
+
+    &:active {
+        background: linear-gradient(to right, rgb(11 41 59 / 25%), rgb(20 134 205 / 47%));
+        box-shadow: 0 0 0 1px var(--secondary-color);
+    }
 }
 
 .background {
@@ -40,13 +92,13 @@
 
     &:hover {
         color: var(--current-link-color);
-        background-color: var(--secondary-color);
+        background-color: var(--overlay-bg-color);
     }
 
     &:active {
         color: var(--secondary-color);
         background: linear-gradient(to right, rgb(11 41 59 / 25%), rgb(20 134 205 / 47%));
-        box-shadow: 0 0 0 2px var(--secondary-color);
+        box-shadow: 0 0 0 1px var(--secondary-color);
     }
 
     &:focus {

@@ -1,9 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-
+import { Meta } from '@storybook/react';
+import { Country } from 'entities/Country';
+import { Currency } from 'entities/Currency';
+import ProfilePage from 'pages/ProfilePage/ui/ProfilePage';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
-import { Theme } from 'shared/contexts';
-import ProfilePage from './ProfilePage';
 
 export default {
     title: 'pages/ProfilePage',
@@ -11,14 +10,25 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof ProfilePage>;
+} as Meta<typeof ProfilePage>;
 
-const Template: ComponentStory<typeof ProfilePage> = () => <ProfilePage />;
+export const Primary = {
+    args: {},
 
-export const Ligth = Template.bind({});
-Ligth.args = {};
-Ligth.decorators = [StoreDecorator({})];
-
-export const Dark = Template.bind({});
-Dark.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({})];
+    decorators: [
+        StoreDecorator({
+            profile: {
+                readonly: true,
+                form: {
+                    username: 'admin',
+                    age: 28,
+                    country: Country.Russia,
+                    lastname: 'Vedeneev',
+                    first: 'asd',
+                    city: 'asf',
+                    currency: Currency.USD,
+                },
+            },
+        }),
+    ],
+};

@@ -1,5 +1,5 @@
 .app_light_theme {
-    --bg-image: url("http://localhost:3000/assets/white.jpg");
+    --bg-image: url("http://localhost:3000/assets/backgrounds/white.jpg");
     --bg-color: rgb(255 255 255 / 36.3%);
     --overlay-bg-color: rgb(156 150 150 / 45.2%);
     --overlay-border-color: 1px solid rgb(80 78 78 / 21.9%);
@@ -8,4 +8,6 @@
     --inverted-primary-color: rgb(18 80 116);
     --inverted-secondary-color: rgb(82 175 121);
     --current-link-color: rgb(145 29 92);
+    --done-color: rgb(88 141 91);
+    --warn-color: rgb(245 111 111);
 }

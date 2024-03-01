@@ -1,5 +1,5 @@
 .app_dark_theme {
-    --bg-image: url("http://localhost:3000/assets/dark.jpg");
+    --bg-image: url("http://localhost:3000/assets/backgrounds/dark.jpg");
     --bg-color: rgb(5 11 26 / 41.1%);
     --overlay-bg-color: rgb(255 255 255 / 8.2%);
     --overlay-border-color: 1px solid rgb(255 255 255 / 18%);
@@ -8,4 +8,6 @@
     --inverted-primary-color: rgb(160 160 165);
     --inverted-secondary-color: rgb(9 72 123);
     --current-link-color: rgb(21 209 196);
+    --done-color: rgb(88 141 91);
+    --warn-color: rgb(245 111 111);
 }

@@ -1,4 +1,5 @@
 import { RoutePath } from 'app/providers/router/routeConfig/RouteConfig';
+import { TFunction } from 'i18next';
 import React from 'react';
 import AboutIcon from 'shared/assets/icons/about.svg';
 import ProfileIcon from 'shared/assets/icons/profile.svg';
@@ -9,16 +10,16 @@ export interface SidebarItemType {
     Icon: React.VFC<React.SVGProps<SVGSVGElement>>;
 }
 
-export const SidebarItemsList: SidebarItemType[] = [
+export const SidebarItemsList = (t:TFunction): SidebarItemType[] => [
     {
         path: RoutePath.main,
         Icon: AboutIcon,
-        text: 'About-page-link',
+        text: t('Main-page-link'),
     },
     {
         path: RoutePath.profile,
         Icon: ProfileIcon,
-        text: 'Профиль',
+        text: t('Profile-page-link'),
     },
 
 ];

@@ -1,8 +1,5 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
-import { Theme } from 'shared/contexts';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator';
 import LoginForm from './LoginForm';
 
@@ -12,70 +9,45 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-} as ComponentMeta<typeof LoginForm>;
+} as Meta<typeof LoginForm>;
 
-const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args} />;
+export const Primary = {
+    args: {},
 
-export const Primary = Template.bind({});
-Primary.args = {
+    decorators: [
+        StoreDecorator({
+            loginForm: {
+                username: '123',
+                password: 'asdfsdf',
+            },
+        }),
+    ],
 };
-Primary.decorators = [StoreDecorator({
-    loginForm: {
-        username: '123',
-        password: 'asdfsdf',
-    },
-})];
 
-export const PrimaryWithError = Template.bind({});
-PrimaryWithError.args = {
-};
-PrimaryWithError.decorators = [StoreDecorator({
-    loginForm: {
-        username: '123',
-        password: 'asdfsdf',
-        error: 'Ошибка',
-    },
-})];
+export const PrimaryWithError = {
+    args: {},
 
-export const PrimaryWithLoading = Template.bind({});
-PrimaryWithLoading.args = {
+    decorators: [
+        StoreDecorator({
+            loginForm: {
+                username: '123',
+                password: 'asdfsdf',
+                error: 'Ошибка',
+            },
+        }),
+    ],
 };
-PrimaryWithLoading.decorators = [StoreDecorator({
-    loginForm: {
-        username: '123',
-        password: 'asdfsdf',
-        isLoading: true,
-    },
-})];
 
-export const Dark = Template.bind({});
-Dark.args = {
-};
-Dark.decorators = [ThemeDecorator(Theme.DARK), ThemeDecorator(Theme.DARK), StoreDecorator({
-    loginForm: {
-        username: '123',
-        password: 'asdfsdf',
-    },
-})];
+export const PrimaryWithLoading = {
+    args: {},
 
-export const DarkWithError = Template.bind({});
-DarkWithError.args = {
+    decorators: [
+        StoreDecorator({
+            loginForm: {
+                username: '123',
+                password: 'asdfsdf',
+                isLoading: true,
+            },
+        }),
+    ],
 };
-DarkWithError.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
-    loginForm: {
-        username: '123',
-        password: 'asdfsdf',
-        error: 'Ошибка',
-    },
-})];
-
-export const DarkWithLoading = Template.bind({});
-DarkWithLoading.args = {
-};
-DarkWithLoading.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
-    loginForm: {
-        username: '123',
-        password: 'asdfsdf',
-        isLoading: true,
-    },
-})];

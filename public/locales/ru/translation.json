@@ -1,5 +1,6 @@
 {
   "Main-page-link": "Главная",
+  "Profile-page-link": "Профиль",
   "About-page-link": "О сайте",
   "Lang-switcher": "English",
   "Sidebar-toggle-close": "Cвернуть",
@@ -14,5 +15,19 @@
   "Authorization": "Логин",
   "Incorrect login or password": "Неверный логин или пароль",
   "Done": "Успешно!",
-  "Log out": "Выйти"
+  "Log out": "Выйти",
+  "currency": {
+    "label": "Валюта",
+    "RUB": "Российский рубль",
+    "EUR": "Евро",
+    "USD": "Доллар США"
+  },
+  "country": {
+    "label": "Страна",
+    "Russia": "Россия",
+    "Belarus": "Беларусь",
+    "Ukraine": "Украина",
+    "Kazakhstan": "Казахстан",
+    "Armenia": "Армения"
+  }
 }

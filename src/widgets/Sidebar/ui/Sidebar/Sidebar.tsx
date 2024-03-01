@@ -1,4 +1,5 @@
 import { memo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Expand from 'shared/assets/icons/expand-right.svg';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
@@ -13,6 +14,7 @@ interface SidebarProps {
 }
 
 export const Sidebar = memo((props: SidebarProps) => {
+    const { t } = useTranslation();
     const [collapsed, setCollapsed] = useState(false);
     const {
         ...otherProps
@@ -43,7 +45,7 @@ export const Sidebar = memo((props: SidebarProps) => {
             </div>
             <div className={cls.items}>
 
-                {SidebarItemsList.map((item) => (
+                {SidebarItemsList(t).map((item) => (
                     <SidebarItem
                         item={item}
                         collapsed={collapsed}

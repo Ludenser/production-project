@@ -5,7 +5,7 @@ i18n
     .use(initReactI18next)
     .init({
         lng: 'ru',
-        fallbackLng: 'ru',
+        fallbackLng: false,
         debug: false,
 
         interpolation: {

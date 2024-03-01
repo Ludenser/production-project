@@ -1,4 +1,3 @@
-import { t } from 'i18next';
 import { memo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
@@ -28,7 +27,7 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
             )}
             />
             <span className={cls.link}>
-                {t(item.text)}
+                {item.text}
             </span>
         </AppLink>
     );
