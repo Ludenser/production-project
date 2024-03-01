@@ -23,13 +23,6 @@ export const Clear = {
     },
 };
 
-export const ClearInverted = {
-    args: {
-        children: 'Text',
-        theme: ButtonTheme.CLEAR_INVERTED,
-    },
-};
-
 export const Outline = {
     args: {
         children: 'Text',

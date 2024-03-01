@@ -33,7 +33,7 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
-    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.5",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
     "@storybook/addon-actions": "^7.6.17",
     "@storybook/addon-essentials": "^7.6.17",
     "@storybook/addon-interactions": "^7.6.17",
@@ -124,6 +124,6 @@
     }
   },
   "overrides": {
-    "chrome-remote-interface": "0.31.3"
+    "chrome-remote-interface": "0.32.1"
   }
 }

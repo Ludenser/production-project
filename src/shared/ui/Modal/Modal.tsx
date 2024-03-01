@@ -43,10 +43,13 @@ export const Modal = (props: ModalProps) => {
     }, [isOpen]);
 
     const clearForm = useCallback(() => {
-        dispatch(loginActions.clearUsername());
-        dispatch(loginActions.clearPassword());
-        dispatch(loginActions.clearError());
-    }, [dispatch]);
+        if (__PROJECT__ !== 'storybook') {
+            dispatch(loginActions.clearUsername());
+            dispatch(loginActions.clearPassword());
+            dispatch(loginActions.clearError());
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const closeHandler = useCallback(() => {
         if (onClose) {

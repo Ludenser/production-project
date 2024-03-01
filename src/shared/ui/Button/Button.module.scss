@@ -15,15 +15,11 @@
     transition: all 0.25s cubic-bezier(0.53, 0.01, 0.35, 1.5);
 }
 
-.clear,
-.clearInverted {
+.clear {
     padding: 0;
     border: none;
     background: none;
     outline: none;
-}
-
-.clearInverted {
     color: var(--inverted-primary-color);
 }
 

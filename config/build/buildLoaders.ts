@@ -1,8 +1,10 @@
 import { RuleSetRule } from 'webpack';
+import { buildBabelLoader } from './buildBabelLoader';
 import { buildCssLoader } from './loaders/buildCssLoader';
 import { BuildOptions } from './types/config';
 
-export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
+export function buildLoaders(options: BuildOptions): RuleSetRule[] {
+    const { isDev } = options;
     const imageLoader = {
         test: /\.(png|jpe?g|gif|woff|jpg)$/i,
         use: [
@@ -22,16 +24,7 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
         use: ['@svgr/webpack'],
     };
 
-    const babelLoader = {
-        test: /\.(js|jsx|tsx)$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-            loader: 'babel-loader',
-            options: {
-                presets: ['@babel/preset-env'],
-            },
-        },
-    };
+    const babelLoader = buildBabelLoader(options);
 
     const cssLoader = buildCssLoader(isDev);
 

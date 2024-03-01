@@ -1,0 +1,39 @@
+{
+  "About-page": "About-page",
+  "About-page-link": "About-page-link",
+  "Authorization": "Authorization",
+  "Log in": "Log in",
+  "Log out": "Log out",
+  "Login": "Login",
+  "Password": "Password",
+  "Reload page": "Reload page",
+  "Something went wrong": "Something went wrong",
+  "Username": "Username",
+  "cancel": "cancel",
+  "country": {
+    "label": "label"
+  },
+  "currency": {
+    "label": "label"
+  },
+  "edit": "edit",
+  "error": {
+    "age": "age",
+    "country": "country",
+    "nodata": "nodata",
+    "server": "server",
+    "userdata": "userdata"
+  },
+  "main-page": "main-page",
+  "notFound-page": "notFound-page",
+  "profile-text": "profile-text",
+  "save": "save",
+  "your-age": "your-age",
+  "your-avatar": "your-avatar",
+  "your-city": "your-city",
+  "your-firstname": "your-firstname",
+  "your-lastname": "your-lastname",
+  "your-username": "your-username",
+  "Попробуйте обновить страницу": "Попробуйте обновить страницу",
+  "Произошла ошибка при загрузке профиля": "Произошла ошибка при загрузке профиля"
+}

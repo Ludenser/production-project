@@ -13,6 +13,7 @@ export default {
 export const Primary = {
     args: {
         isOpen: true,
+        lazy: false,
         children:
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid commodi consequatur eligendi impedit incidunt necessitatibus possimus quis saepe sunt totam.\n ',
     },
@@ -20,8 +21,9 @@ export const Primary = {
     decorators: [
         StoreDecorator({
             loginForm: {
-                username: '123',
-                password: 'asdfsdf',
+                isLoading: false,
+                username: '',
+                password: '',
             },
         }),
     ],
